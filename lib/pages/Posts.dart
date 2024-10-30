@@ -19,7 +19,7 @@ class Posts extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  IconButton(
+                         IconButton(
                     icon: const Icon(
                       Icons.menu,
                       size: 25,

@@ -10,19 +10,38 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
+  String token = '';
   @override
+ 
   void initState() {
     // TODO: implement initState
     super.initState();
     isLoggedIn();
   }
 
+  // Future<void> isLoggedIn() async {
+  //   SharedPreferences pref = await SharedPreferences.getInstance();
+  //   String token = pref.getString('token')??'';
+  //   if(token.isNotEmpty){
+  //     Navigator.pushNamed(context, '/example');
+  //   }
+  // }
   Future<void> isLoggedIn() async {
+    //we store the data to our local device using shared preference
     SharedPreferences pref = await SharedPreferences.getInstance();
-    String token = pref.getString('token')??'';
+
+    //we collect stored data with the pref object
+    //we search for the key : token and save that value in the token variable
+     token = pref.getString('token') ?? ''; //we provide a fall back value of empty string in case the token dosent exist or is empty , casue token var is non-nullable
+    
+    //if token is empty the condition becomes true and goes to login page
     if(token.isNotEmpty){
-      Navigator.pushNamed(context, '/example');
+      Navigator.pushNamed(context, '/login');
+    }else{
+      //getStartedPage
     }
+
+    // if token is empty the isloggedIn func is over and continues with the rest of the build ie the get started page
   }
 
   @override
